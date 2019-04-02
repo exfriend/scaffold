@@ -1,0 +1,26 @@
+{
+  "name": "exfriend/scaffold",
+  "description": "exfriend/scaffold",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "exfriend",
+      "email": "i@zlad.tk"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Exfriend\\Scaffold\\": "src/"
+    }
+  },
+  "require": {},
+  "extra": {
+    "afterglow": {
+      "recipes": {
+        "Exfriend\\Scaffold\\AddHelpersFile": "src/AddHelpersFile.php",
+        "Exfriend\\Scaffold\\AddMustHavePackages": "src/AddMustHavePackages.php",
+        "Exfriend\\Scaffold\\ScaffoldFrontend": "src/ScaffoldFrontend.php"
+      }
+    }
+  }
+}
