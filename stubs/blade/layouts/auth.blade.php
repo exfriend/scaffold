@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('body')
-    <body class="text-sans bg-gray-700 h-screen">
+    <body class="text-sans bg-gray-900 sm:bg-gray-800 h-screen">
     <div id="app">
         <div class="center h-screen">
             @yield('content')

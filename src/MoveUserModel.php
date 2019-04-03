@@ -21,7 +21,7 @@ class MoveUserModel
         $this->command->task( 'Moving model... ', function ()
         {
             $user = file_get_contents( 'app/User.php' );
-            $user = str_replace( 'namespace App', 'namespace App\Models', $user );
+            $user = str_replace( 'namespace App;', 'namespace App\Models;', $user );
             $user = preg_replace( '~fillable.*?\[.*?];~ims', 'guarded = [];', $user );
             @mkdir( 'app/Models' );
             file_put_contents( 'app/Models/User.php', $user );

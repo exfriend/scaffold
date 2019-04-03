@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="flex flex-col break-words bg-gray-800 sm:rounded-lg sm:shadow-lg sm:p-10">
+    <div class="flex flex-col break-words bg-gray-900 sm:rounded-lg sm:shadow-lg sm:p-10">
         <div class="center">
             @include('partials.logo')
         </div>
@@ -11,7 +11,7 @@
         <form class="w-full p-6" method="POST" action="{{ route('password.email') }}">
             @csrf
             <div class="flex flex-col flex-wrap mb-6">
-                <input id="email" placeholder="Email" type="email" class="input input-minimal bg-gray-700 text-gray-200 border-gray-700 w-full {{ $errors->has('email') ? ' border-red-500' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                <input id="email" placeholder="Email" type="email" class="input input-minimal bg-gray-800 rounded text-gray-200 border-gray-700 w-full {{ $errors->has('email') ? ' border-red-500' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
                 @if ($errors->has('email'))
                     <p class="text-red-500 text-sm mt-4">
                         {{ $errors->first('email') }}

@@ -34,6 +34,9 @@ class AddMustHavePackages
     protected $tasks = [
         'composer require --dev barryvdh/laravel-ide-helper doctrine/dbal',
         'composer require barryvdh/laravel-cors laracasts/flash pyaesone17/active-state',
+        'php artisan -q ide-helper:gen',
+        'php artisan -q ide-helper:eloquent',
+        'php artisan -q ide-helper:met',
     ];
 
     public function handle()
