@@ -31,20 +31,43 @@ class ScaffoldFrontend
 
 
     protected $tasks = [
-        'php artisan preset tailwindcss-auth',
-        'npm install',
-        'rm tailwind.js',
-        'node_modules/.bin/tailwind init',
-        'npm run dev && npm run dev',
-        'npm install --save animate.css moment moment-timezone vee-validate',
+        //        'php artisan preset none',
+        //        'npm install',
+        //        'rm tailwind.js',
+        //        'node_modules/.bin/tailwind init',
+        //        'npm run dev && npm run dev',
     ];
 
     public function handle()
     {
-        if ( $this->command->confirm( 'Scaffold frontend?', true ) )
+        if ( !$this->command->confirm( 'Scaffold frontend?', true ) )
         {
-            return $this->execAll( $this->tasks, 'Scaffolding frontend: ' );
+            return false;
         }
+
+        \File::deleteDirectory( 'resources/sass' );
+        \File::deleteDirectory( 'resources/js' );
+        \File::copyDirectory( __DIR__ . '/../stubs/frontend/resources/js', 'resources/js' );
+        \File::copyDirectory( __DIR__ . '/../stubs/frontend/resources/css', 'resources/css' );
+        \File::copy( __DIR__ . '/../stubs/frontend/webpack.mix.js', 'webpack.mix.js' );
+
+        $packageJson = json_decode( file_get_contents( 'package.json' ), true );
+        unset( $packageJson[ 'devDependencies' ][ 'popper.js' ] );
+        unset( $packageJson[ 'devDependencies' ][ 'lodash' ] );
+        unset( $packageJson[ 'devDependencies' ][ 'bootstrap' ] );
+        file_put_contents( 'package.json', json_encode( $packageJson, JSON_PRETTY_PRINT ) );
+
+        $this->exec(
+            'npm install --save-dev tailwindcss@next laravel-mix-tailwind laravel-mix-purgecss tailwindcss-tables animate.css moment moment-timezone vee-validate',
+            'Updating package.json: ' );
+
+        $this->execAll(
+            [
+                'npm install',
+                'node_modules/.bin/tailwind init',
+                'npm run dev && npm run dev',
+            ], 'Initializing frontend: ' );
+
 
     }
 
