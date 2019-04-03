@@ -20,7 +20,7 @@ class AddHelpersFile
 
         $this->command->task( 'Adding helpers file', function ()
         {
-            file_put_contents( getcwd() . '/app/helpers.php', file_get_contents( __DIR__ . '/../../stubs/helpers.php' ) );
+            file_put_contents( getcwd() . '/app/helpers.php', file_get_contents( __DIR__ . '/../stubs/helpers.php' ) );
         } );
 
         $this->command->task( 'Configuring composer autoload', function ()

@@ -19,7 +19,8 @@
       "recipes": {
         "Exfriend\\Scaffold\\AddHelpersFile": "src/AddHelpersFile.php",
         "Exfriend\\Scaffold\\AddMustHavePackages": "src/AddMustHavePackages.php",
-        "Exfriend\\Scaffold\\ScaffoldFrontend": "src/ScaffoldFrontend.php"
+        "Exfriend\\Scaffold\\ScaffoldFrontend": "src/ScaffoldFrontend.php",
+        "Exfriend\\Scaffold\\ScaffoldDocker": "src/ScaffoldDocker.php"
       }
     }
   }

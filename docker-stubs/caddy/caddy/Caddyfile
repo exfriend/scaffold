@@ -1,0 +1,17 @@
+import vhosts
+root /var/www/public
+fastcgi / CHANGEME__php-fpm:9000 php {
+    index index.php
+}
+
+rewrite {
+    to {path} {path}/ /index.php?{query}
+    }
+
+gzip
+log / /var/log/caddy/access.log "{when} {remote} {method} {host} {uri} {proto} {status} {size} {latency}"
+errors /var/log/caddy/error.log
+
+tls {
+  max_certs 9000
+}
