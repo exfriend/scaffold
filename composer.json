@@ -19,6 +19,7 @@
       "recipes": {
         "Exfriend\\Scaffold\\MoveUserModel": "src/MoveUserModel.php",
         "Exfriend\\Scaffold\\ScaffoldBlade": "src/ScaffoldBlade.php",
+        "Exfriend\\Scaffold\\AddLocalRoutes": "src/AddLocalRoutes.php",
         "Exfriend\\Scaffold\\ScaffoldFrontend": "src/ScaffoldFrontend.php",
         "Exfriend\\Scaffold\\AddHelpersFile": "src/AddHelpersFile.php",
         "Exfriend\\Scaffold\\AddMustHavePackages": "src/AddMustHavePackages.php",
