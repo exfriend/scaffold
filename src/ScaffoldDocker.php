@@ -239,13 +239,13 @@ HERE;
         $stub = <<<HERE
   changeme__worker:
     build:
-      context: ${CHANGEME__DOCKER_DIR}/worker
+      context: \${CHANGEME__DOCKER_DIR}/worker
     volumes:
-      - ${CHANGEME__APP_CODE_PATH_HOST}:${CHANGEME__APP_CODE_PATH_CONTAINER}
+      - \${CHANGEME__APP_CODE_PATH_HOST}:\${CHANGEME__APP_CODE_PATH_CONTAINER}
     depends_on:
       - changeme__workspace
     extra_hosts:
-      - "dockerhost:${CHANGEME__DOCKER_HOST_IP}"
+      - "dockerhost:\${CHANGEME__DOCKER_HOST_IP}"
     networks:
       - backend
 HERE;

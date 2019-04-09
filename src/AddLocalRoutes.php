@@ -45,7 +45,7 @@ class AddLocalRoutes
             return;
         }
 
-        $r = str_replace( '$this->mapWebRoutes();', '$this->mapWebRoutes();' . PHP_EOL . PHP_EOL . ' if ( app()->environment() == \'local\' ) { Route::middleware( \'web\' )->namespace( $this->web_namespace )->group( base_path( \'routes/local.php\' ) ); } ', $r );
+        $r = str_replace( '$this->mapWebRoutes();', '$this->mapWebRoutes();' . PHP_EOL . PHP_EOL . ' if ( app()->environment() == \'local\' ) { Route::middleware( \'web\' )->namespace( $this->namespace )->group( base_path( \'routes/local.php\' ) ); } ', $r );
 
         file_put_contents( 'app/Providers/RouteServiceProvider.php', $r );
 
