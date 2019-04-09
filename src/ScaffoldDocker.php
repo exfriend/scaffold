@@ -226,6 +226,33 @@ HERE;
 
     }
 
+    public function addWorker()
+    {
+        $this->command->line( 'Adding worker' );
+
+        \File::copyDirectory( __DIR__ . '/../docker-stubs/worker', '.docker/worker' );
+
+        $stub = <<<HERE
+  changeme__worker:
+    build:
+      context: ${CHANGEME__DOCKER_DIR}/worker
+    volumes:
+      - ${CHANGEME__APP_CODE_PATH_HOST}:${CHANGEME__APP_CODE_PATH_CONTAINER}
+    depends_on:
+      - changeme__workspace
+    extra_hosts:
+      - "dockerhost:${CHANGEME__DOCKER_HOST_IP}"
+    networks:
+      - backend
+HERE;
+
+        $stub = str_replace( 'CHANGEME', strtoupper( $this->project ), $stub );
+        $stub = str_replace( 'changeme', strtolower( $this->project ), $stub );
+
+        $this->dockerComposeServices .= $stub . PHP_EOL;
+
+    }
+
     public function addMysql()
     {
         $this->command->line( 'Adding MySQL' );
