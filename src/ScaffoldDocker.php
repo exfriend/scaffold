@@ -77,6 +77,10 @@ class ScaffoldDocker
         {
             $this->addMyAdmin();
         }
+        if ( $this->command->confirm( 'Add worker?', true ) )
+        {
+            $this->addWorker();
+        }
 
         $this->finish();
 
