@@ -36,7 +36,7 @@ class AddLocalRoutes
             return false;
         }
 
-        \File::copy( __DIR__ . '/../stubs/routes/local.php', 'routes/' );
+        \File::copy( __DIR__ . '/../stubs/routes/local.php', 'routes/local.php' );
 
         $r = file_get_contents( 'app/Providers/RouteServiceProvider.php' );
 
